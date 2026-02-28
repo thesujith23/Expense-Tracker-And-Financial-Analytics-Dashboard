@@ -23,7 +23,7 @@ A full-stack personal finance management app built with the **MERN stack**. Trac
 
 ## 🚀 Live Demo
 
-> _Coming soon 
+https://expense-tracker-and-financial-analy-five.vercel.app/login
 
 ---
 
