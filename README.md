@@ -23,7 +23,7 @@ A full-stack personal finance management app built with the **MERN stack**. Trac
 
 ## 🚀 Live Demo
 
-> _Coming soon / Add your deployment link here_
+> _Coming soon 
 
 ---
 
