@@ -4,6 +4,23 @@ A full-stack personal finance management app built with the **MERN stack**. Trac
 
 ---
 
+## 🧰 Tech Stack
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+
+---
+
 ## 🚀 Live Demo
 
 > _Coming soon / Add your deployment link here_
@@ -20,27 +37,6 @@ A full-stack personal finance management app built with the **MERN stack**. Trac
 - ➕ **Add Transactions** — Log income or expenses with category, date, and optional note
 - 🔒 **Protected Routes** — Dashboard accessible only to authenticated users
 - 📱 **Responsive UI** — Optimized for both desktop and mobile with Tailwind CSS
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-| Technology | Purpose |
-|---|---|
-| React.js | UI framework |
-| Tailwind CSS | Styling |
-| Recharts | Data visualization (Pie & Bar charts) |
-| Axios | HTTP client with JWT interceptor |
-| React Router | Client-side routing & protected routes |
-
-### Backend
-| Technology | Purpose |
-|---|---|
-| Node.js + Express | REST API server |
-| MongoDB + Mongoose | Database & ODM |
-| JSON Web Tokens (JWT) | Authentication |
-| bcryptjs | Password hashing |
 
 ---
 
