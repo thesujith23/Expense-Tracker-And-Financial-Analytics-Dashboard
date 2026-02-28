@@ -10,12 +10,6 @@ A full-stack personal finance management app built with the **MERN stack**. Trac
 
 ---
 
-## 📸 Screenshots
-
-> _Add screenshots of your dashboard, login page, and charts here_
-
----
-
 ## ✨ Features
 
 - 🔐 **JWT Authentication** — Secure register/login with bcrypt password hashing and token-based auth
