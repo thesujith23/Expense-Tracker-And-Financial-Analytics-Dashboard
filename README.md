@@ -1,0 +1,193 @@
+# 💰 Expense Tracker & Financial Analytics Dashboard
+
+A full-stack personal finance management app built with the **MERN stack**. Track your income and expenses, visualize spending habits with interactive charts, and stay on top of your financial health — all in one sleek, dark-themed dashboard.
+
+---
+
+## 🚀 Live Demo
+
+> _Coming soon / Add your deployment link here_
+
+---
+
+## 📸 Screenshots
+
+> _Add screenshots of your dashboard, login page, and charts here_
+
+---
+
+## ✨ Features
+
+- 🔐 **JWT Authentication** — Secure register/login with bcrypt password hashing and token-based auth
+- 📊 **Interactive Dashboard** — Real-time financial overview with income, expenses, and balance summary
+- 🍩 **Expense Pie Chart** — Visual breakdown of spending by category
+- 🍩 **Income Pie Chart** — Visual breakdown of income by category
+- 📈 **Monthly Bar Chart** — Trend view of expenses across months
+- ➕ **Add Transactions** — Log income or expenses with category, date, and optional note
+- 🔒 **Protected Routes** — Dashboard accessible only to authenticated users
+- 📱 **Responsive UI** — Optimized for both desktop and mobile with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React.js | UI framework |
+| Tailwind CSS | Styling |
+| Recharts | Data visualization (Pie & Bar charts) |
+| Axios | HTTP client with JWT interceptor |
+| React Router | Client-side routing & protected routes |
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Node.js + Express | REST API server |
+| MongoDB + Mongoose | Database & ODM |
+| JSON Web Tokens (JWT) | Authentication |
+| bcryptjs | Password hashing |
+
+---
+
+## 📁 Project Structure
+
+```
+Expense-Tracker-And-Financial-Analytics-Dashboard/
+│
+├── backend/
+│   ├── models/
+│   │   ├── User.js              # User schema (name, email, password)
+│   │   └── Transaction.js       # Transaction schema (amount, type, category, date, note)
+│   ├── middleware/
+│   │   └── authMiddleware.js    # JWT verification middleware
+│   ├── routes/
+│   │   ├── authRoutes.js        # POST /register, POST /login
+│   │   └── transactionRoutes.js # CRUD + aggregation endpoints
+│   └── server.js                # Express app entry point
+│
+└── frontend/
+    └── src/
+        ├── services/
+        │   └── api.jsx           # Axios instance with auth interceptor
+        ├── components/
+        │   ├── SummaryCard.jsx       # Income / Expense / Balance cards
+        │   ├── AddTransactions.jsx   # Transaction form
+        │   ├── ExpensePieChart.jsx   # Recharts pie chart (expenses)
+        │   ├── IncomePieChart.jsx    # Recharts pie chart (income)
+        │   ├── MonthlyBarChart.jsx   # Recharts bar chart (monthly)
+        │   └── ProtectedRoute.jsx    # Auth-guarded route wrapper
+        └── pages/
+            ├── Dashboard.jsx     # Main app view
+            ├── Login.jsx         # Login page
+            └── Register.jsx      # Register page
+```
+
+---
+
+## 🔌 API Endpoints
+
+### Auth Routes — `/api/auth`
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/register` | Register a new user |
+| POST | `/login` | Login and receive JWT token |
+
+### Transaction Routes — `/api/transactions` *(Protected)*
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/` | Add a new transaction |
+| GET | `/` | Get all transactions for logged-in user |
+| GET | `/summary` | Get total income, expense, and balance |
+| GET | `/expense-summary` | Expense totals grouped by category |
+| GET | `/income-summary` | Income totals grouped by category |
+| GET | `/category-summary` | All transactions grouped by category |
+| GET | `/monthly-expense` | Monthly expense totals (for bar chart) |
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- Node.js v18+
+- MongoDB (local or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas))
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/thesujith23/Expense-Tracker-And-Financial-Analytics-Dashboard.git
+cd Expense-Tracker-And-Financial-Analytics-Dashboard
+```
+
+### 2. Setup the Backend
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file in the `backend/` folder:
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+```
+
+Start the server:
+```bash
+npm start
+```
+
+### 3. Setup the Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The app will run at `http://localhost:5173` (Vite) or `http://localhost:3000` (CRA).
+
+---
+
+## 🔑 Environment Variables
+
+| Variable | Description |
+|---|---|
+| `PORT` | Port for the Express server (default: 5000) |
+| `MONGO_URI` | Your MongoDB connection string |
+| `JWT_SECRET` | Secret key used to sign JWT tokens |
+
+---
+
+## 🧠 How It Works
+
+1. **User registers/logs in** → Backend hashes the password with bcrypt and issues a JWT
+2. **JWT is stored in localStorage** → Axios interceptor automatically attaches it to every request via `Authorization: Bearer <token>`
+3. **authMiddleware** on the backend verifies the token on every protected route
+4. **Transactions** are stored in MongoDB with `userId` reference, ensuring data isolation per user
+5. **MongoDB Aggregation Pipelines** power the summary, category breakdown, and monthly trend endpoints
+6. **Recharts** renders the data into interactive pie and bar charts on the dashboard
+
+---
+
+## 🐛 Known Issues / Future Improvements
+
+- [ ] Add delete/edit transaction functionality
+- [ ] Add date range filtering for charts
+- [ ] Paginate the transaction list
+- [ ] Add loading skeletons while data fetches
+- [ ] Deploy backend to Render / Railway and frontend to Vercel / Netlify
+- [ ] Add error boundaries for chart components
+
+---
+
+## 👨‍💻 Author
+
+**Sujith**  
+[GitHub](https://github.com/thesujith23)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
