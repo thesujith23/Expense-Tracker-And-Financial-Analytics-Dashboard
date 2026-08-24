@@ -1,3 +1,6 @@
+const dns = require('node:dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -11,6 +14,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "http://localhost:5174",
       "https://expense-tracker-and-financial-analy-five.vercel.app"
     ],
     credentials: true,

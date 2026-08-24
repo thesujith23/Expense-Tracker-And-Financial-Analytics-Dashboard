@@ -1,98 +1,100 @@
-import { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import API from "../services/api"
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import API from '../services/api'
 
-const Register = () => {
-  const navigate = useNavigate()
+export default function Register() {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
-  const handleRegister = async (e) => {
-    e.preventDefault()
-    try {
-      await API.post("/auth/register", {
-        name,
-        email,
-        password
-      })
-
-      alert("Registration successful. Please login.")
-      navigate("/login")
-
-    } catch (error) {
-      alert(error.response?.data?.msg || "Registration failed")
+    const handleRegister = async (e) => {
+        e.preventDefault()
+        try {
+            await API.post("/auth/register", {
+                name,
+                email,
+                password
+            })
+            alert("Registration Successful, please login")
+            navigate("/login")
+        } catch (err) {
+            console.log(err)
+            alert("Registration Failed")
+        }
     }
-  }
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white p-4">
-      <div className="w-full max-w-md p-8 space-y-8 bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl relative overflow-hidden">
-        {/* Decorative glow */}
-        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-green-500 via-teal-500 to-blue-500"></div>
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-[#0B0F1A] text-white p-4 relative overflow-hidden">
+            {/* Ambient glow */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+            
+            <div className="w-full max-w-md relative z-10">
+                <div className="text-center mb-10">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 mb-5 shadow-lg shadow-indigo-500/20">
+                        <span className="text-2xl">🎉</span>
+                    </div>
+                    <h2 className="text-3xl font-extrabold tracking-tight text-white mb-2">Create Account</h2>
+                    <p className="text-sm text-slate-500">Join FinanceFlow to manage your expenses</p>
+                </div>
 
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight">Create an Account</h2>
-          <p className="text-sm text-gray-400 mt-2">Start tracking your expenses today</p>
+                <div className="bg-[#111827]/60 border border-white/[0.06] rounded-2xl p-8">
+                    <form className="space-y-5" onSubmit={handleRegister}>
+                        <div className="space-y-1.5">
+                            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider" htmlFor="name">Full Name</label>
+                            <input
+                                id="name"
+                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+                                placeholder="John Doe"
+                                type="text"
+                                required
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        
+                        <div className="space-y-1.5">
+                            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider" htmlFor="email">Email Address</label>
+                            <input
+                                id="email"
+                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+                                placeholder="you@example.com"
+                                type="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider" htmlFor="password">Password</label>
+                            <input
+                                id="password"
+                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+                                placeholder="••••••••"
+                                type="password"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="w-full py-3 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-bold text-sm rounded-lg shadow-lg shadow-indigo-500/20 hover:opacity-90 hover:-translate-y-0.5 transition-all"
+                        >
+                            Create Account →
+                        </button>
+                    </form>
+                </div>
+
+                <div className="text-center mt-6 text-sm text-slate-500 font-medium">
+                    Already have an account?{' '}
+                    <Link to="/login" className="font-bold text-violet-400 hover:text-violet-300 transition-colors">
+                        Sign In
+                    </Link>
+                </div>
+            </div>
         </div>
-
-        <form className="space-y-5" onSubmit={handleRegister}>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1" htmlFor="name">Full Name</label>
-            <input
-              id="name"
-              className="w-full p-3 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
-              placeholder="John Doe"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1" htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              className="w-full p-3 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
-              placeholder="you@example.com"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1" htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              className="w-full p-3 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
-              placeholder="••••••••"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:shadow-teal-500/20 transform hover:-translate-y-0.5 transition-all duration-200"
-          >
-            Create Account
-          </button>
-        </form>
-
-        <div className="text-center mt-6 text-sm text-gray-400">
-          Already have an account?{' '}
-          <Link to="/login" className="font-medium text-teal-400 hover:text-teal-300 transition-colors">
-            Sign in
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
-
-export default Register

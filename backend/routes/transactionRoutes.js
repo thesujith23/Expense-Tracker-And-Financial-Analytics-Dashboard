@@ -22,7 +22,8 @@ router.post('/',authMiddleware,async(req,res)=>{
 
         res.status(201).json(newTransaction)
     }catch(err){
-        res.status(500).json({msg:err.msg})
+        console.error("TRANSACTION POST ERROR:", err.message)
+        res.status(500).json({msg:err.message})
     }
 })
 
@@ -33,7 +34,7 @@ router.get('/',authMiddleware,async(req,res)=>{
         }).sort({date:-1})
         res.json(transactions)
     }catch(err){
-        res.status(500).json({msg:err.msg})
+        res.status(500).json({msg:err.message})
     }
 })
 
@@ -67,7 +68,7 @@ router.get("/summary",authMiddleware,async(req,res)=>{
             balance:totalIncome-totalExpense
         })
     }catch(err){
-        res.status(500).json({msg:err.msg})
+        res.status(500).json({msg:err.message})
     }
 })
 
@@ -92,7 +93,7 @@ router.get('/category-summary',authMiddleware,async(req,res)=>{
         ])
         res.json(summary)
     }catch(err){
-        res.status(500).json({msg:err.msg})
+        res.status(500).json({msg:err.message})
     }
 })
 
@@ -161,7 +162,7 @@ router.get("/monthly-expense", authMiddleware, async (req, res) => {
       {
         $group: {
           _id: { 
-           year: {$year:"$year"},
+           year: {$year:"$date"},
             month:{$month: "$date"}
             },
           total: { $sum: "$amount" }
@@ -184,6 +185,23 @@ router.get("/monthly-expense", authMiddleware, async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ message: error.message })
+  }
+})
+
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const transaction = await Transaction.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user.id
+    })
+    
+    if (!transaction) {
+      return res.status(404).json({ msg: 'Transaction not found' })
+    }
+    
+    res.json({ msg: 'Transaction removed' })
+  } catch (err) {
+    res.status(500).json({ msg: err.message })
   }
 })
 

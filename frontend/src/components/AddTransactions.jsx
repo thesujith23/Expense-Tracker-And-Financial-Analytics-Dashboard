@@ -5,10 +5,14 @@ const AddTransactions = ({ refresh }) => {
   const [amount, setAmount] = useState("")
   const [type, setType] = useState("expense")
   const [category, setCategory] = useState("")
-  const [date, setDate] = useState("")
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0])
   const [note, setNote] = useState("")
 
   const handleSubmit = async () => {
+    if (!amount || !category || !date) {
+      alert("Please fill in Amount, Category, and Date")
+      return
+    }
     try {
       await API.post("/transactions", {
         amount: Number(amount),
@@ -22,66 +26,64 @@ const AddTransactions = ({ refresh }) => {
 
       setAmount("")
       setCategory("")
-      setDate("")
+      setDate(new Date().toISOString().split("T")[0])
       setNote("")
 
-      refresh() // refetch dashboard data
+      refresh()
 
     } catch (error) {
-      alert("Failed to add transaction")
+      console.log("Transaction error:", error.response?.status, error.response?.data)
+      alert("Failed to add: " + (error.response?.data?.msg || error.response?.data?.message || error.message))
     }
   }
 
+  const inputClass = "w-full p-2.5 text-sm rounded-lg bg-[#0B0F1A] border border-white/[0.08] text-white placeholder-slate-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+
   return (
-    <div className="bg-gray-900 p-3 lg:p-4 rounded-lg shadow-sm flex-1 flex flex-col shrink-0 h-full">
-      <h3 className="text-base font-semibold text-white mb-3 shrink-0">
-        Add Transaction
-      </h3>
+    <div className="flex flex-col gap-3">
+      <input
+        className={inputClass}
+        placeholder="Amount (₹)"
+        type="number"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
 
-      <div className="flex flex-col gap-2.5 flex-1 overflow-y-auto pr-1 custom-scrollbar">
-        <input
-          className="p-1.5 text-sm rounded bg-gray-800 text-white"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
+      <select
+        className={inputClass}
+        value={type}
+        onChange={(e) => setType(e.target.value)}
+      >
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
 
-        <select
-          className="p-1.5 text-sm rounded bg-gray-800 text-white"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-        >
-          <option value="expense">Expense</option>
-          <option value="income">Income</option>
-        </select>
+      <input
+        className={inputClass}
+        placeholder="Category (e.g. Food, Salary)"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      />
 
-        <input
-          className="p-1.5 text-sm rounded bg-gray-800 text-white"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
+      <input
+        type="date"
+        className={inputClass}
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+      />
 
-        <input
-          type="date"
-          className="p-1.5 text-sm rounded bg-gray-800 text-white h-8"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-
-        <input
-          className="p-1.5 text-sm rounded bg-gray-800 text-white shrink-0"
-          placeholder="Note"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-        />
-      </div>
+      <input
+        className={inputClass}
+        placeholder="Note (optional)"
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+      />
 
       <button
         onClick={handleSubmit}
-        className="mt-3 bg-blue-600 px-3 py-1.5 text-sm rounded hover:bg-blue-700 shrink-0"
+        className="w-full mt-1 py-2.5 text-sm font-bold rounded-lg bg-gradient-to-r from-violet-500 to-indigo-600 text-white hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-lg shadow-violet-500/20"
       >
-        Add
+        + Add Transaction
       </button>
     </div>
   )
