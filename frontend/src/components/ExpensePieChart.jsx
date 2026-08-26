@@ -19,7 +19,8 @@ const ExpensePieChart = ({ data }) => {
     <ResponsiveContainer width="100%" height="100%">
       <PieChart>
         <Pie
-          isAnimationActive={false}
+          animationBegin={200}
+          animationDuration={1000}
           data={data}
           dataKey="total"
           nameKey="_id"
