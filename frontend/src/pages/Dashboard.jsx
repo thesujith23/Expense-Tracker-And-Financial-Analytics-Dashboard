@@ -6,8 +6,10 @@ import MonthlyBarChart from "../components/MonthlyBarChart"
 import IncomePieChart from "../components/IncomePieChart"
 import AddTransactions from "../components/AddTransactions"
 import TransactionList from "../components/TransactionList"
+import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
+  const navigate = useNavigate()
   const [summary, setSummary] = useState({})
   const [expense, setExpenseData] = useState([])
   const [income, setIncomeData] = useState([])
@@ -56,7 +58,7 @@ export default function Dashboard() {
           <button
             onClick={() => {
               localStorage.removeItem("token")
-              window.location.href = "/login"
+              navigate("/login")
             }}
             className="md:hidden text-slate-400 text-xs font-medium px-3 py-1.5 rounded-md border border-white/[0.06] hover:bg-white/[0.04]"
           >
@@ -75,7 +77,7 @@ export default function Dashboard() {
         <button
           onClick={() => {
             localStorage.removeItem("token")
-            window.location.href = "/login"
+            navigate("/login")
           }}
           className="hidden md:block text-slate-400 text-sm font-medium px-4 py-2 rounded-lg border border-white/[0.06] hover:bg-white/[0.04] hover:text-white transition-all"
         >

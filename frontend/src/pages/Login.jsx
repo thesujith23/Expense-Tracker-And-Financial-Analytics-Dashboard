@@ -15,7 +15,7 @@ export default function Login() {
                 password
             })
             localStorage.setItem("token", res.data.token)
-            window.location.href = "/"
+            navigate("/")
         } catch (err) {
             console.log(err)
             alert("Login Failed")
@@ -25,7 +25,7 @@ export default function Login() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#0B0F1A] text-white p-4 relative overflow-hidden">
             {/* Ambient glow */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none will-change-transform transform-gpu"></div>
             
             <div className="w-full max-w-md relative z-10">
                 <div className="text-center mb-10">

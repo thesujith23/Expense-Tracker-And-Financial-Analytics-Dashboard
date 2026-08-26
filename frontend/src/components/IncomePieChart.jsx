@@ -19,6 +19,7 @@ const IncomePieChart = ({ data }) => {
     <ResponsiveContainer width="100%" height="100%">
       <PieChart>
         <Pie
+          isAnimationActive={false}
           data={data}
           dataKey="total"
           nameKey="_id"

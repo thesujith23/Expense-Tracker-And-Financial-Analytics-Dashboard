@@ -57,6 +57,7 @@ const MonthlyBarChart = ({ data }) => {
           </linearGradient>
         </defs>
         <Bar
+          isAnimationActive={false}
           dataKey="total"
           fill="url(#barGradient)"
           radius={[6, 6, 0, 0]}
