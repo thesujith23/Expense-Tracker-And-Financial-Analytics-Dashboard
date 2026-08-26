@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="bg-[#1a1f35] border border-white/10 rounded-lg px-3 py-2 text-xs shadow-xl">
         <p className="text-slate-400 mb-0.5">{label}</p>
-        <p className="text-violet-400 font-bold">₹ {payload[0].value?.toLocaleString('en-IN')}</p>
+        <p className="text-emerald-400 font-bold">₹ {payload[0].value?.toLocaleString('en-IN')}</p>
       </div>
     )
   }

@@ -44,7 +44,7 @@ export default function Dashboard() {
       <nav className="sticky top-0 z-50 flex flex-col md:flex-row justify-between items-center px-5 md:px-8 py-4 bg-[#0B0F1A]/90 backdrop-blur-xl border-b border-white/[0.06] gap-4">
         <div className="flex items-center justify-between w-full md:w-auto">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white text-base shadow-lg shadow-violet-500/20">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-base shadow-lg shadow-emerald-500/20">
               💸
             </div>
             <div>
@@ -90,7 +90,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <SummaryCard title="Total Income" value={summary.totalIncome} icon="📈" gradient="from-emerald-500/10 to-emerald-500/5" accent="text-emerald-400" borderColor="border-emerald-500/20" />
           <SummaryCard title="Total Expense" value={summary.totalExpense} icon="📉" gradient="from-rose-500/10 to-rose-500/5" accent="text-rose-400" borderColor="border-rose-500/20" />
-          <SummaryCard title="Balance" value={summary.balance} icon="💰" gradient="from-violet-500/10 to-violet-500/5" accent="text-violet-400" borderColor="border-violet-500/20" />
+          <SummaryCard title="Balance" value={summary.balance} icon="💰" gradient="from-emerald-500/10 to-emerald-500/5" accent="text-emerald-400" borderColor="border-emerald-500/20" />
         </div>
 
         {/* Tab Content */}
@@ -168,7 +168,7 @@ function TabButton({ active, onClick, icon, label }) {
       onClick={onClick}
       className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${
         active 
-        ? 'bg-gradient-to-r from-violet-500/20 to-indigo-500/20 text-white shadow-[0_0_15px_rgba(139,92,246,0.15)] border border-violet-500/30' 
+        ? 'bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-white shadow-[0_0_15px_rgba(139,92,246,0.15)] border border-emerald-500/30' 
         : 'text-slate-400 hover:text-white hover:bg-white/[0.04] border border-transparent'
       }`}
     >
@@ -184,7 +184,7 @@ function MobileTabButton({ active, onClick, icon, label }) {
       onClick={onClick}
       className={`flex flex-col items-center justify-center w-20 py-2 rounded-xl transition-all ${
         active 
-        ? 'text-violet-400' 
+        ? 'text-emerald-400' 
         : 'text-slate-500 hover:text-slate-300'
       }`}
     >

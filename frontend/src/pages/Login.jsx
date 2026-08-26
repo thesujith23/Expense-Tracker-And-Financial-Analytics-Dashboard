@@ -25,11 +25,11 @@ export default function Login() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#0B0F1A] text-white p-4 relative overflow-hidden">
             {/* Ambient glow */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none"></div>
             
             <div className="w-full max-w-md relative z-10">
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 mb-5 shadow-lg shadow-violet-500/20">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 mb-5 shadow-lg shadow-emerald-500/20">
                         <span className="text-2xl">💸</span>
                     </div>
                     <h2 className="text-3xl font-extrabold tracking-tight text-white mb-2">Welcome Back</h2>
@@ -42,7 +42,7 @@ export default function Login() {
                             <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider" htmlFor="email">Email Address</label>
                             <input
                                 id="email"
-                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all"
                                 placeholder="you@example.com"
                                 type="email"
                                 required
@@ -55,7 +55,7 @@ export default function Login() {
                             <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider" htmlFor="password">Password</label>
                             <input
                                 id="password"
-                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+                                className="w-full p-3 bg-[#0B0F1A] border border-white/[0.08] rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all"
                                 placeholder="••••••••"
                                 type="password"
                                 required
@@ -66,7 +66,7 @@ export default function Login() {
 
                         <button
                             type="submit"
-                            className="w-full py-3 bg-gradient-to-r from-violet-500 to-indigo-600 text-white font-bold text-sm rounded-lg shadow-lg shadow-violet-500/20 hover:opacity-90 hover:-translate-y-0.5 transition-all"
+                            className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-sm rounded-lg shadow-lg shadow-emerald-500/20 hover:opacity-90 hover:-translate-y-0.5 transition-all"
                         >
                             Sign In →
                         </button>
@@ -75,7 +75,7 @@ export default function Login() {
 
                 <div className="text-center mt-6 text-sm text-slate-500 font-medium">
                     Don't have an account?{' '}
-                    <Link to="/register" className="font-bold text-violet-400 hover:text-violet-300 transition-colors">
+                    <Link to="/register" className="font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
                         Register now
                     </Link>
                 </div>

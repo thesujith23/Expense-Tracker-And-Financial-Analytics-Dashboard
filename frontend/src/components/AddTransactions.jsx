@@ -37,7 +37,7 @@ const AddTransactions = ({ refresh }) => {
     }
   }
 
-  const inputClass = "w-full p-2.5 text-sm rounded-lg bg-[#0B0F1A] border border-white/[0.08] text-white placeholder-slate-500 focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/20 transition-all"
+  const inputClass = "w-full p-2.5 text-sm rounded-lg bg-[#0B0F1A] border border-white/[0.08] text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all"
 
   return (
     <div className="flex flex-col gap-3">
@@ -81,7 +81,7 @@ const AddTransactions = ({ refresh }) => {
 
       <button
         onClick={handleSubmit}
-        className="w-full mt-1 py-2.5 text-sm font-bold rounded-lg bg-gradient-to-r from-violet-500 to-indigo-600 text-white hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-lg shadow-violet-500/20"
+        className="w-full mt-1 py-2.5 text-sm font-bold rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-lg shadow-emerald-500/20"
       >
         + Add Transaction
       </button>
