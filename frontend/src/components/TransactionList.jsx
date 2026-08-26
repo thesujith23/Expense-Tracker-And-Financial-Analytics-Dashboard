@@ -2,12 +2,21 @@ import API from '../services/api'
 import { useEffect, useState } from "react"
 
 const TransactionList = ({ transactions, refresh }) => {
+  const [deletedIds, setDeletedIds] = useState(new Set())
+
   const handleDelete = async (id) => {
+    // Optimistic UI hide
+    setDeletedIds(prev => new Set(prev).add(id))
     try {
       await API.delete(`/transactions/${id}`)
       refresh()
     } catch (err) {
       console.error(err)
+      setDeletedIds(prev => {
+        const next = new Set(prev)
+        next.delete(id)
+        return next
+      })
       alert("Failed to delete transaction")
     }
   }
@@ -23,7 +32,7 @@ const TransactionList = ({ transactions, refresh }) => {
 
   return (
     <div className="flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar max-h-[400px]">
-      {transactions.map(t => (
+      {transactions.filter(t => !deletedIds.has(t._id)).map(t => (
         <div key={t._id} className="flex items-center justify-between p-3 bg-[#0B0F1A] border border-white/[0.04] rounded-xl hover:bg-white/[0.02] transition-colors">
           <div className="flex items-center gap-3">
             <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg ${t.type === 'income' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'}`}>

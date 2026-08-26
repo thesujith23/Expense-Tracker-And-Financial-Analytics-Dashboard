@@ -19,11 +19,13 @@ export default function Dashboard() {
 
   const fetchData = async () => {
     try {
-      const summaryRes = await API.get("/transactions/summary")
-      const expenseRes = await API.get("/transactions/expense-summary")
-      const incomeRes = await API.get("/transactions/income-summary")
-      const monthlyRes = await API.get("/transactions/monthly-expense")
-      const txRes = await API.get("/transactions")
+      const [summaryRes, expenseRes, incomeRes, monthlyRes, txRes] = await Promise.all([
+        API.get("/transactions/summary"),
+        API.get("/transactions/expense-summary"),
+        API.get("/transactions/income-summary"),
+        API.get("/transactions/monthly-expense"),
+        API.get("/transactions")
+      ]);
 
       setSummary(summaryRes.data)
       setExpenseData(expenseRes.data)

@@ -22,7 +22,6 @@ const AddTransactions = ({ refresh }) => {
         note
       })
 
-      alert("Transaction added")
 
       setAmount("")
       setCategory("")
